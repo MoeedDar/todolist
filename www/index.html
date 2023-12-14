@@ -1,9 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <form>
-        Task Description: <input name="description" type="text"/>
+    <h1>Todolist</h1>
+    <br/>
+
+    <form class="input-group">
+        <input
+            class="form-control"
+            name="description"
+            type="text"
+            placeholder="Task Description"
+        />
         <button
+            class="btn btn-primary"
             hx-post="/tasks/"
             hx-target="#tasks"
             hx-swap="innerHtml"
@@ -11,8 +20,11 @@
             Create New Task!
         </button>
     </form>
+    <br/>
+    
     <ul
         id="tasks"
+        class="list-group"
         hx-trigger="load"
         hx-get="/tasks"
     >

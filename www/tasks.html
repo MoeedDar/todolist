@@ -1,15 +1,7 @@
 {% for task in tasks %}
-    <li>
-        {{ task.description }}
-        <button
-            hx-delete="/tasks/{{ task.id }}"
-            hx-confirm="Are you sure?"
-            hx-target="#tasks"
-            hx-swap="innerHtml"
-        >
-            Delete
-        </button>
+    <li class="list-group-item d-flex gap-4">
         <input
+            class="form-check-input"
             type="checkbox"
             hx-put="/tasks/{{ task.id }}"
             hx-trigger="change"
@@ -17,5 +9,16 @@
             hx-swap="innerHtml"
             {% if task.completed %}checked{% endif %}
         >
+        <span class="flex-grow-1 {% if task.completed %}text-decoration-line-through{% endif %}">
+            {{ task.description }}
+        </span>
+        <button
+            class="btn-close btn-sm btn-danger"
+            hx-delete="/tasks/{{ task.id }}"
+            hx-confirm="Are you sure?"
+            hx-target="#tasks"
+            hx-swap="innerHtml"
+        >
+        </button>
     </li>
 {% endfor %}
