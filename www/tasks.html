@@ -1,21 +1,21 @@
 {% for task in tasks %}
-        <li>
-            {{ task.description }}
-            <button
-                hx-delete="/tasks/{{ task.id }}"
-                hx-confirm="Are you sure?"
-                hx-target="#tasks"
-                hx-swap="innerHtml"
-            >
-                Delete
-            </button>
-            <input
-                type="checkbox"
-                hx-put="/tasks/{{ task.id }}"
-                hx-trigger="change"
-                hx-target="#tasks"
-                hx-swap="innerHtml"
-                {% if task.completed %}checked{% endif %}
-            >
-        </li>
+    <li>
+        {{ task.description }}
+        <button
+            hx-delete="/tasks/{{ task.id }}"
+            hx-confirm="Are you sure?"
+            hx-target="#tasks"
+            hx-swap="innerHtml"
+        >
+            Delete
+        </button>
+        <input
+            type="checkbox"
+            hx-put="/tasks/{{ task.id }}"
+            hx-trigger="change"
+            hx-target="#tasks"
+            hx-swap="innerHtml"
+            {% if task.completed %}checked{% endif %}
+        >
+    </li>
 {% endfor %}
